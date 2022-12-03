@@ -9,40 +9,59 @@ import (
 
 func TestMoveUpward(t *testing.T) {
 	// given
-	bsm := NewRicochetRobotsStateManager(NewBoardManager())
-	bsm.SetRobotOn(models.RedRobot, models.NewPosition(2, 2))
+	bsm := NewRicochetRobotsManager(mockBoardManager())
 	// when
-	end := bsm.MoveRobot(models.RedRobot, models.Upward)
+	end := bsm.MoveRobot(models.Red, models.Upward)
 	// then
-	assert.Equal(t, models.NewPosition(1, 2), end)
+	assert.Equal(t, models.NewPosition(0, 1), end)
 }
+
 func TestMoveRightward(t *testing.T) {
 	// given
+	bsm := NewRicochetRobotsManager(mockBoardManager())
 	// when
+	end := bsm.MoveRobot(models.Red, models.Downward)
 	// then
-	assert.True(t, false)
+	assert.Equal(t, models.NewPosition(3, 1), end)
 }
+
 func TestMoveDownward(t *testing.T) {
 	// given
+	bsm := NewRicochetRobotsManager(mockBoardManager())
 	// when
+	end := bsm.MoveRobot(models.Red, models.Leftward)
 	// then
-	assert.True(t, false)
+	assert.Equal(t, models.NewPosition(1, 0), end)
 }
+
 func TestMoveLeftward(t *testing.T) {
 	// given
+	bsm := NewRicochetRobotsManager(mockBoardManager())
 	// when
+	end := bsm.MoveRobot(models.Red, models.Rightward)
 	// then
-	assert.True(t, false)
+	assert.Equal(t, models.NewPosition(1, 3), end)
 }
-func TestBlockedByWall(t *testing.T) {
-	// given
-	// when
-	// then
-	assert.True(t, false)
+// func TestBlockedByWall(t *testing.T) {
+// 	// given
+// 	// when
+// 	// then
+// 	assert.True(t, false)
+// }
+// func TestBlockedByRobot(t *testing.T) {
+// 	// given
+// 	// when
+// 	// then
+// 	assert.True(t, false)
+// }
+
+func mockBoardManager() *models.BoardManager {
+	return models.NewBoardManager(mockBoard())
 }
-func TestBlockedByRobot(t *testing.T) {
-	// given
-	// when
-	// then
-	assert.True(t, false)
+
+func mockBoard() *models.Board {
+	board := models.NewBoard(4)
+	redRobotStartPoint := models.NewPosition(1, 1)
+	board.SetRobot(models.Red, redRobotStartPoint) // TODO 這個有點越界了，外界不應該直接操作 board
+	return board
 }

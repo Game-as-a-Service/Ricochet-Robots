@@ -82,6 +82,7 @@ Feature: 一句話簡介這份規格書所涵蓋的軟體功能
             - Add （功能、文件、測試，從無到有的創建。）
             - Update （功能、文件、測試，程式碼改動，有進行功能上的改動。）
             - Style (功能、文件、測試，文本改動，沒有進行功能上的改動。)
+            - Finish (由於採用 TDD，所以當完成某測試時就用這個。)
             - Refactor （重構既有代碼）
             - Fix (修正 bug)
    - 內文
@@ -114,7 +115,19 @@ Feature: 一句話簡介這份規格書所涵蓋的軟體功能
 - Feat
 當要新增功能時開啟一個新的 Feature 分支
 
-![Git Flow](./assets/gitflow.png)
+![Git Flow](./assets/gitflow.png) 
 
 > Reference  
 [Git Flow 是什麼？為什麼需要這種東西？](https://gitbook.tw/chapters/gitflow/why-need-git-flow)
+
+---
+### Walking Skeleton
+
+1. CI/CD: minumum auto build/test/deploy
+2. 決定粗略的架構
+3. end-to-end function 貫穿架構
+
+### 筆記
+* 梳理複雜的流程 (Event Storming)
+* 梳理複雜的規則 (Example Mapping)
+* 梳理複雜的概念 (Object Oriented Analysis)  
