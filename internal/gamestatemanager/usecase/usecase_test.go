@@ -42,6 +42,7 @@ func TestMoveLeftward(t *testing.T) {
 	// then
 	assert.Equal(t, models.NewPosition(1, 3), end)
 }
+
 // func TestBlockedByWall(t *testing.T) {
 // 	// given
 // 	// when

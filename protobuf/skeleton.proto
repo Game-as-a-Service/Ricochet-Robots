@@ -1,0 +1,14 @@
+syntax = 'proto3';
+option go_package = ".;skeleton";
+package skeleton;
+
+service WalkingSkeleton {
+    rpc Walk(WalkRequest) returns (WalkReply) {}
+}
+
+message WalkRequest {
+}
+
+message WalkReply {
+    string message = 1;
+}

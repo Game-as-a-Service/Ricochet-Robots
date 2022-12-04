@@ -1,5 +1,5 @@
 init:
-	chmod 755 ./init.sh ./add.sh && ./init.sh
+	chmod +x ./init.sh ./add.sh && ./init.sh
 
 mock:
 	mockery --all --keeptree
@@ -10,4 +10,14 @@ build:
 run:
 	docker-compose up -d
 
-.PHONY: init mock run
+protoc: protobuf/skeleton.proto
+	protoc --go_out=protobuf protobuf/skeleton.proto
+	protoc --go-grpc_out=protobuf protobuf/skeleton.proto
+
+run_grpc:
+	go run cmd/grpc/main.go
+
+grpcui:
+	grpcui -plaintext localhost:50051
+
+.PHONY: init mock run run_grpc grpcui
